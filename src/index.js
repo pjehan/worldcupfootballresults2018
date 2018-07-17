@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-class Clock extends Component {
+class WorldCupFootballResults extends Component {
 
 	constructor(props) {
 		super(props);
@@ -69,4 +69,4 @@ class Clock extends Component {
 
 }
 
-export default Clock;
+export default WorldCupFootballResults;
