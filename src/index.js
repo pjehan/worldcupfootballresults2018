@@ -63,7 +63,6 @@ class Clock extends Component {
 			})
 
 			var display =
-				<Fragment>
 					<div style={{ 'display': 'flex', 'justifyContent': 'space-between' }}>
 						<div style={{ 'textAlign': 'left'}}>
 							{homeGoals}
@@ -72,8 +71,6 @@ class Clock extends Component {
 							{awayGoals}
 						</div>
 					</div>
-
-				</Fragment>
 			return (
 				<div style={style}>
 					{score}
