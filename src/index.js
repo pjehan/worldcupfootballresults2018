@@ -36,31 +36,19 @@ class Clock extends Component {
 			return <div></div>
 		} else {
 			var displayedMatch = this.state.matches[this.state.numMatch];
-			var score = <h4 style={{ 'textAlign': 'center' }}>{displayedMatch.home_team_country} {displayedMatch.home_team.goals} - {displayedMatch.away_team.goals} {displayedMatch.away_team_country}</h4>
+			var score = <h4 style={{ 'textAlign': 'center' }}>{displayedMatch.home_team_country} {displayedMatch.home_team.goals} - {displayedMatch.away_team.goals} {displayedMatch.away_team_country}</h4>;
 
-			var homeGoalsFromUs = displayedMatch.home_team_events.filter(event => {
-				return event.type_of_event == 'goal' || event.type_of_event == 'goal-penalty'
-			});
-			var homeGoalsFromThem = displayedMatch.away_team_events.filter(event => {
-				return event.type_of_event === 'goal-own';
-			});
+			var homeGoalsFromUs = displayedMatch.home_team_events.filter(event => (event.type_of_event == 'goal' || event.type_of_event == 'goal-penalty'));
+			var homeGoalsFromThem = displayedMatch.away_team_events.filter(event => (event.type_of_event === 'goal-own'));
 			var homeGoals = [...homeGoalsFromUs, ...homeGoalsFromThem];
 
-			homeGoals = homeGoals.map(goal => {
-				return <div>{goal.player} {goal.time}</div>
-			})
+			homeGoals = homeGoals.map(goal => (<div>{goal.player} {goal.time}</div>));
 
-			var awayGoalsFromUs = displayedMatch.away_team_events.filter(event => {
-				return event.type_of_event === 'goal' || event.type_of_event === 'goal-penalty';
-			});
-			var awayGoalsFromThem = displayedMatch.home_team_events.filter(event => {
-				return event.type_of_event === 'goal-own';
-			});
+			var awayGoalsFromUs = displayedMatch.away_team_events.filter(event => (event.type_of_event === 'goal' || event.type_of_event === 'goal-penalty'));
+			var awayGoalsFromThem = displayedMatch.home_team_events.filter(event => (event.type_of_event === 'goal-own'));
 			var awayGoals = [...awayGoalsFromUs, ...awayGoalsFromThem];
-			
-			awayGoals = awayGoals.map(goal => {
-				return <div>{goal.player} {goal.time}</div>
-			})
+
+			awayGoals = awayGoals.map(goal => (<div>{goal.player} {goal.time}</div>));
 
 			var display =
 					<div style={{ 'display': 'flex', 'justifyContent': 'space-between' }}>
@@ -70,7 +58,7 @@ class Clock extends Component {
 						<div style={{ 'textAlign': 'right'}}>
 							{awayGoals}
 						</div>
-					</div>
+					</div>;
 			return (
 				<div style={style}>
 					{score}
