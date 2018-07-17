@@ -5,6 +5,10 @@ class WorldCupFootballResults extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { matches: [], numMatch: 0 };
+		this.config = {
+			refreshInterval: this.props.refreshInterval || 3000,
+			backgroundColor: this.props.backgroundColor || 'lightblue'
+		};
 	}
 
 	componentDidMount() {
@@ -16,7 +20,7 @@ class WorldCupFootballResults extends Component {
 
 		this.timer = setInterval(() => {
 			this.props.animate().then(() => this.setState({ numMatch: this.state.numMatch + 1 }))
-		}, 2000)
+		}, this.config.refreshInterval)
 	}
 	componentWillUnmount() {
 		clearInterval(this.timer);
@@ -29,7 +33,7 @@ class WorldCupFootballResults extends Component {
 			alignItems: 'center',
 			justifyContent: 'center',
 			height: '100%',
-			backgroundColor: 'pink'
+			backgroundColor: this.config.backgroundColor
 		};
 		if (this.state.matches.length === 0) {
 			return <div></div>
