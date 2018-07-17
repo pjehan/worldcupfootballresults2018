@@ -19,7 +19,10 @@ class WorldCupFootballResults extends Component {
 			});
 
 		this.timer = setInterval(() => {
-			this.props.animate().then(() => this.setState({ numMatch: this.state.numMatch + 1 }))
+			this.props.animate().then(() => {
+				const numMatch = this.state.numMatch >= this.state.matches.length ? 0 : this.state.numMatch + 1;
+				this.setState({ numMatch: numMatch });
+      })
 		}, this.config.refreshInterval)
 	}
 	componentWillUnmount() {
