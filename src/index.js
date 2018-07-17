@@ -4,7 +4,7 @@ class Clock extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { matches: [], numMatch: 0, nbMatches: 0 };
+		this.state = { matches: [], numMatch: 0 };
 	}
 
 	componentDidMount() {
@@ -12,7 +12,6 @@ class Clock extends Component {
 			.then(response => response.json())
 			.then(matches => {
 				this.setState({ matches: matches });
-				this.setState({ nbMatches: this.state.matches.length });
 			});
 
 		this.timer = setInterval(() => {
