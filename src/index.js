@@ -45,13 +45,13 @@ class WorldCupFootballResults extends Component {
 			var homeGoalsFromThem = displayedMatch.away_team_events.filter(event => (event.type_of_event === 'goal-own'));
 			var homeGoals = [...homeGoalsFromUs, ...homeGoalsFromThem];
 
-			homeGoals = homeGoals.map(goal => (<div>{goal.player} {goal.time}</div>));
+			homeGoals = homeGoals.map(goal => (<div key={goal.id}>{goal.player} {goal.time}</div>));
 
 			var awayGoalsFromUs = displayedMatch.away_team_events.filter(event => (event.type_of_event === 'goal' || event.type_of_event === 'goal-penalty'));
 			var awayGoalsFromThem = displayedMatch.home_team_events.filter(event => (event.type_of_event === 'goal-own'));
 			var awayGoals = [...awayGoalsFromUs, ...awayGoalsFromThem];
 
-			awayGoals = awayGoals.map(goal => (<div>{goal.player} {goal.time}</div>));
+			awayGoals = awayGoals.map(goal => (<div key={goal.id}>{goal.player} {goal.time}</div>));
 
 			var display =
 					<div style={{ 'display': 'flex', 'justifyContent': 'space-between' }}>
